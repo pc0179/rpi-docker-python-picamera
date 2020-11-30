@@ -1,6 +1,6 @@
 FROM maidbot/resin-raspberrypi3-qemu
 
-RUN [ "cross-build-start" ]
+#RUN [ "cross-build-start" ]
 
 #switch on systemd init system in container
 ENV INITSYSTEM off
@@ -9,13 +9,17 @@ RUN apt-get update && apt-get install -y \
         python-pip \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN apt-get install -y \
+	python-pip
+
 # pip install python deps from requirements.txt
 # For caching until requirements.txt changes
 ENV READTHEDOCS True
-COPY ./requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
+#COPY ./requirements.txt /requirements.txt
+#RUN pip install -r /requirements.txt
+RUN pip install picamera
 
-RUN [ "cross-build-end" ]  
+#RUN [ "cross-build-end" ]  
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
