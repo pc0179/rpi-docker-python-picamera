@@ -1,3 +1,11 @@
+
+$ docker build . -t rpi-cam-sl
+$ docker run --mount type=tmpfs,destination=/app --device=/dev/vchiq/ -v /opt/vc:/opt/vc --env LD_LIBRARY_PATH=/opt/vc/lib $IMAGE_ID
+
+
+
+# OLD readme below.....
+
 # (python + raspberry pi camera module) on Docker
 
 This is a simple app that demonstrates how to create a Docker container for the Raspberry Pi camera module.
