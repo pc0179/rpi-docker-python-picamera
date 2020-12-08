@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import time
-import picamera
+#import picamera
+
+from picamera import PiCamera
 
 # while True:
     # with picamera.PiCamera() as camera:
@@ -18,10 +20,13 @@ import picamera
 
 MAX_ITER = 5
 
+camera = PiCamera()
 for i in range(0,MAX_ITER):
-    with picamera.PiCamera() as camera:
-        camera.resolution = (1280, 720)
-        time.sleep(2)
-        camera.capture('/data/test_image_%i.png' % i)
-        #camera.capture('/home/pi/Pictures/image_%i.png' % i)
-    print('test image %i taken and saved?' % i)
+    #with picamera.PiCamera() as camera:
+    #with camera as PiCamera():
+    camera.resolution = (1280, 720)
+    time.sleep(2)
+    camera.capture('/data/test_image_%i.png' % i)
+    #camera.capture('/home/pi/Pictures/image_%i.png' % i)
+    print('test image %i taken and saved? speriamo...' % i)
+#    print 'test image %i taken and saved' % i
